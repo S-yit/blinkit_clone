@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      
+    }
+    .img-container{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-left: 2%;
+    }
+    .card{
+      width: 15%;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  {% include 'header.html' %}
+  <div class="img-container">
+  {% for i in s %}
+    <div class="card">
+      <a href="{% url 'product_details' i.id %}">
+      <img src="media/{{i.image}}" alt="" style="width: 60%;">
+      </a>
+      <p><b>{{i.sname}}</b></p>
+      <p>{{i.quantity}}</p>
+      <p>Rs. {{i.price}}</p>
+      
+    </div>
+  {% endfor %}
+  </div>
+</body>
+</html>
